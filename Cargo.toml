@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "challenges/beginner/01-hello-token",
+    "challenges/beginner/02-token-transfer",
+    "challenges/intermediate/01-voting-contract",
+    "challenges/intermediate/02-access-control",
+    "challenges/advanced/01-staking-contract",
+    "challenges/advanced/02-multisig-wallet",
+]
+resolver = "2"
