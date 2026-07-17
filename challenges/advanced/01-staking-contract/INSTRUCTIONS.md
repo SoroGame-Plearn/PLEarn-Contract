@@ -1,6 +1,7 @@
 # Challenge: Staking Contract
 
 ## Difficulty: Advanced
+## Time Estimate: 90–120 minutes
 
 ## Objective
 Build a staking contract where users lock tokens and earn rewards over time.
