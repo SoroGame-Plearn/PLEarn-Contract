@@ -1,4 +1,6 @@
 #![no_std]
+// Imports kept for use when implementing the TODOs below.
+#[allow(unused_imports)]
 use soroban_sdk::{contract, contractimpl, Address, Env, String};
 
 #[contract]

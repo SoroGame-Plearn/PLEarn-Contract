@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use soroban_sdk::{testutils::Address as _, vec, Address, Env};
     use crate::MultisigWallet;
+    use soroban_sdk::{testutils::Address as _, vec, Address, Env};
 
     #[test]
     fn test_submit_and_approve() {

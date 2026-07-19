@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use soroban_sdk::{testutils::Address as _, Address, Env, String};
     use crate::VotingContract;
+    use soroban_sdk::{testutils::Address as _, Address, Env, String};
 
     #[test]
     fn test_vote_and_count() {

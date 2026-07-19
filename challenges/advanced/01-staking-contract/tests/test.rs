@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use soroban_sdk::{testutils::Address as _, Address, Env};
     use crate::StakingContract;
+    use soroban_sdk::{testutils::Address as _, Address, Env};
 
     #[test]
     fn test_stake_and_get_stake() {
