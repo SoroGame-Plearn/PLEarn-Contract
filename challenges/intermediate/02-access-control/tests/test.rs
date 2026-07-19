@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use soroban_sdk::{testutils::Address as _, symbol_short, Address, Env};
     use crate::AccessControl;
+    use soroban_sdk::{symbol_short, testutils::Address as _, Address, Env};
 
     #[test]
     fn test_grant_and_check_role() {

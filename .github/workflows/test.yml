@@ -1,0 +1,84 @@
+name: Contract Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  fmt:
+    name: Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - run: cargo fmt --all --check
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ci
+      # --lib only: test targets of unimplemented challenge stubs do not
+      # compile by design (learners fill in the TODOs to make them pass).
+      - run: cargo clippy --workspace --lib -- -D warnings
+
+  test:
+    name: Test ${{ matrix.challenge }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - challenge: beginner/01-hello-token
+            implemented: true
+          - challenge: beginner/02-token-transfer
+            implemented: true
+          - challenge: intermediate/01-voting-contract
+            implemented: false
+          - challenge: intermediate/02-access-control
+            implemented: false
+          - challenge: advanced/01-staking-contract
+            implemented: false
+          - challenge: advanced/02-multisig-wallet
+            implemented: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ci
+
+      - name: Build contract (wasm)
+        run: cargo build --manifest-path challenges/${{ matrix.challenge }}/Cargo.toml --release --target wasm32-unknown-unknown
+
+      - name: Run tests
+        id: tests
+        # Unimplemented challenge stubs fail their tests by design; flip
+        # `implemented: true` in the matrix once a challenge is solved.
+        continue-on-error: ${{ !matrix.implemented }}
+        run: cargo test --manifest-path challenges/${{ matrix.challenge }}/Cargo.toml
+
+      - name: Report result
+        if: always()
+        run: |
+          if [ "${{ steps.tests.outcome }}" = "success" ]; then
+            echo "✅ \`${{ matrix.challenge }}\` — tests passed" >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ matrix.implemented }}" = "false" ]; then
+            echo "⏳ \`${{ matrix.challenge }}\` — not yet implemented, tests expected to fail" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "❌ \`${{ matrix.challenge }}\` — tests failed" >> "$GITHUB_STEP_SUMMARY"
+          fi
