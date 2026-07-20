@@ -1,6 +1,7 @@
 # Challenge: Token Transfer
 
 ## Difficulty: Beginner
+## Time Estimate: 30–45 minutes
 
 ## Objective
 Extend a token contract to support peer-to-peer transfers.

@@ -1,6 +1,7 @@
 # Challenge: Access Control
 
 ## Difficulty: Intermediate
+## Time Estimate: 60–90 minutes
 
 ## Objective
 Implement a role-based access control contract.

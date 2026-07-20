@@ -1,6 +1,7 @@
 # Challenge: Multisig Wallet
 
 ## Difficulty: Advanced
+## Time Estimate: 120–180 minutes
 
 ## Objective
 Implement a M-of-N multisignature wallet where transactions require approval from multiple signers.

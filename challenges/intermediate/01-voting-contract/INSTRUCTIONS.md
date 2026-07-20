@@ -1,6 +1,7 @@
 # Challenge: Voting Contract
 
 ## Difficulty: Intermediate
+## Time Estimate: 45–60 minutes
 
 ## Objective
 Build an on-chain voting contract where users vote on proposals.

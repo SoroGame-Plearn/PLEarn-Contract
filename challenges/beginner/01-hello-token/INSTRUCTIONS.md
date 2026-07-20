@@ -1,6 +1,7 @@
 # Challenge: Hello Token
 
 ## Difficulty: Beginner
+## Time Estimate: 20–30 minutes
 
 ## Objective
 Deploy a simple Soroban token contract that can mint and return a balance.
