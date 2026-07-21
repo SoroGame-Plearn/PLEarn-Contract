@@ -48,6 +48,119 @@ PLEarn-Contract/
 
 ---
 
+## Quick Start for Contributors ⚡
+
+**Goal:** Get up and running in under 15 minutes!
+
+### 1. Install Prerequisites
+
+#### Rust (Required)
+```bash
+# Install Rust stable
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+
+# Add WebAssembly target (required for Soroban)
+rustup target add wasm32-unknown-unknown
+```
+
+#### Verify Installation
+```bash
+rustc --version  # Should show stable version
+cargo --version  # Should show matching version
+```
+
+### 2. Clone and Setup Project
+```bash
+git clone https://github.com/SoroGame-Plearn/PLEarn-Contract.git
+cd PLEarn-Contract
+
+# Test your setup with the first challenge
+./scripts/validate.sh challenges/beginner/01-hello-token
+```
+
+**Expected output:**
+```
+🔍 Validating: challenges/beginner/01-hello-token
+✅ Challenge passed!
+```
+
+### 3. Development Workflow
+
+#### Running Tests
+```bash
+# Test specific challenge
+./scripts/validate.sh challenges/beginner/01-hello-token
+
+# Test all challenges
+./scripts/run-tests.sh
+```
+
+#### Git Workflow
+```bash
+# Create feature branch
+git checkout -b feature/your-feature-name
+
+# Make changes, then commit
+git add .
+git commit -m "feat: add voting contract challenge"
+
+# Push and create PR
+git push -u origin feature/your-feature-name
+```
+
+#### Commit Style
+- `feat:` New features/challenges
+- `fix:` Bug fixes  
+- `docs:` Documentation updates
+- `test:` Test improvements
+
+### 4. Troubleshooting
+
+#### Common Issues
+
+**❌ "wasm32-unknown-unknown not found"**
+```bash
+rustup target add wasm32-unknown-unknown
+```
+
+**❌ "cargo test failed" on macOS**
+```bash
+# Install build essentials
+xcode-select --install
+```
+
+**❌ "linker error" on Ubuntu/Debian**
+```bash
+sudo apt update
+sudo apt install build-essential pkg-config
+```
+
+**❌ "permission denied" on Windows**
+- Run terminal as Administrator
+- Or use WSL2 with Ubuntu
+
+**❌ Tests pass locally but fail in CI**
+- Ensure Rust stable version
+- Check `Cargo.toml` has correct `soroban-sdk = "22.0.11"`
+
+#### Still Having Issues?
+
+1. Check [Soroban Setup Guide](https://soroban.stellar.org/docs/getting-started/setup)
+2. Verify [Rust Installation](https://www.rust-lang.org/tools/install)
+3. Open an issue with your error output
+
+### 5. Useful Resources
+
+- 📖 [Soroban Documentation](https://soroban.stellar.org/docs) - Official docs
+- 🚀 [Stellar Developer Portal](https://developers.stellar.org/) - Broader ecosystem
+- 🎓 [Soroban by Example](https://soroban.stellar.org/docs/learn/examples) - Code examples
+- 💬 [Stellar Developer Discord](https://discord.gg/stellardev) - Community help
+- 📝 [Soroban SDK Reference](https://docs.rs/soroban-sdk/) - API documentation
+- 🛠️ [Detailed Setup Guide](docs/SETUP_GUIDE.md) - Step-by-step installation
+
+---
+
 ## Prerequisites
 
 - [Rust](https://www.rust-lang.org/tools/install) (stable)
