@@ -18,6 +18,24 @@ No guessing whether your contract is correct — the tests tell you.
 
 ---
 
+## Architecture
+
+The diagram below shows how the pieces fit together: the challenge folders, the test harness that validates a solution, and the feedback loop a learner goes through from picking a challenge to seeing green tests.
+
+![Diagram showing the PLEarn system architecture: a learner picks a challenge, reads its instructions, writes a solution in src/lib.rs, runs a validator script, and views pass/fail results; the validator scripts run cargo test against the challenge's Cargo.toml and test files, optionally generating an HTML report; a GitHub Actions workflow runs the same test harness on every push and pull request and reports status back to the PR.](docs/diagrams/architecture.svg)
+
+*Diagram: PLEarn system architecture — created for [Issue #2](https://github.com/SoroGame-Plearn/PLEarn-Contract/issues/2), maintained in [`docs/diagrams/`](docs/diagrams/).*
+
+For how an individual contract call behaves once it reaches the Soroban host — authorization, storage, and how unit tests simulate all of it locally — see the supplementary diagram:
+
+![Diagram showing the Soroban contract lifecycle: a contract is written with the #[contract] and #[contractimpl] macros, compiled to a wasm32-unknown-unknown binary, loaded by the Soroban host environment, and invoked by a caller Address; inside an invocation, require_auth verifies the caller, the contract function body runs, contract storage is read or written, and a return value is sent back; local unit tests simulate the host environment and invocation using Env::default() and testutils, without needing a real network.](docs/diagrams/soroban-contract-lifecycle.svg)
+
+*Diagram: Contract lifecycle in the Soroban environment.*
+
+See [docs/diagrams/README.md](docs/diagrams/README.md) for the tools used and how to update these diagrams.
+
+---
+
 ## Project Structure
 
 ```

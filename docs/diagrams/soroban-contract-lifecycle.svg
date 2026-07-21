@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="640" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Contract Lifecycle in the Soroban Environment</text>
+  <text x="550" y="53" text-anchor="middle" font-size="13" fill="#64748b">Supplementary diagram — from source to on-chain execution and back to local tests</text>
+
+  <!-- STAGE 1: source -->
+  <rect x="40" y="90" width="200" height="110" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="140" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">① Contract Source</text>
+  <text x="140" y="140" text-anchor="middle" font-size="11" fill="#334155" font-family="Menlo, Consolas, monospace">#[contract]</text>
+  <text x="140" y="158" text-anchor="middle" font-size="11" fill="#334155" font-family="Menlo, Consolas, monospace">#[contractimpl]</text>
+  <text x="140" y="180" text-anchor="middle" font-size="10" fill="#64748b">src/lib.rs</text>
+
+  <!-- STAGE 2: compile -->
+  <rect x="290" y="90" width="200" height="110" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="390" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">② Compile</text>
+  <text x="390" y="140" text-anchor="middle" font-size="11" fill="#334155">cargo build --target</text>
+  <text x="390" y="156" text-anchor="middle" font-size="11" fill="#334155" font-family="Menlo, Consolas, monospace">wasm32-unknown-unknown</text>
+  <text x="390" y="178" text-anchor="middle" font-size="10" fill="#64748b">produces contract.wasm</text>
+
+  <!-- STAGE 3: host env / deploy -->
+  <rect x="540" y="90" width="230" height="110" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="655" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">③ Soroban Host Env</text>
+  <text x="655" y="140" text-anchor="middle" font-size="11" fill="#334155" font-family="Menlo, Consolas, monospace">Env</text>
+  <text x="655" y="158" text-anchor="middle" font-size="11" fill="#334155">loads &amp; registers wasm</text>
+  <text x="655" y="178" text-anchor="middle" font-size="10" fill="#64748b">testnet / futurenet / local</text>
+
+  <!-- STAGE 4: invocation -->
+  <rect x="820" y="90" width="240" height="110" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="940" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">④ Invocation</text>
+  <text x="940" y="140" text-anchor="middle" font-size="11" fill="#334155">caller Address calls a</text>
+  <text x="940" y="156" text-anchor="middle" font-size="11" fill="#334155">contract function</text>
+  <text x="940" y="178" text-anchor="middle" font-size="10" fill="#64748b">e.g. transfer(from, to, amount)</text>
+
+  <line x1="240" y1="145" x2="288" y2="145" stroke="#475569" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="490" y1="145" x2="538" y2="145" stroke="#475569" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="770" y1="145" x2="818" y2="145" stroke="#475569" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- Execution detail band -->
+  <text x="40" y="250" font-size="12" font-weight="700" letter-spacing="1" fill="#854d0e">EXECUTION — WHAT HAPPENS INSIDE STAGE ④</text>
+  <rect x="40" y="262" width="1020" height="160" rx="12" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+
+  <rect x="70" y="290" width="200" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+  <text x="170" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">require_auth()</text>
+  <text x="170" y="330" text-anchor="middle" font-size="10" fill="#713f12">verify caller signed</text>
+
+  <rect x="310" y="290" width="220" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+  <text x="420" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">contract function body</text>
+  <text x="420" y="330" text-anchor="middle" font-size="10" fill="#713f12">business logic executes</text>
+
+  <rect x="570" y="290" width="220" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+  <text x="680" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">contract storage</text>
+  <text x="680" y="330" text-anchor="middle" font-size="10" fill="#713f12">instance · persistent · temporary</text>
+
+  <rect x="830" y="290" width="200" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+  <text x="930" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">return value</text>
+  <text x="930" y="330" text-anchor="middle" font-size="10" fill="#713f12">result sent back to caller</text>
+
+  <line x1="270" y1="320" x2="308" y2="320" stroke="#b45309" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="530" y1="320" x2="568" y2="320" stroke="#b45309" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="790" y1="320" x2="828" y2="320" stroke="#b45309" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <text x="550" y="390" text-anchor="middle" font-size="10" fill="#94a3b8">panics (unwrap on invalid input, failed auth, etc.) abort the invocation and roll back storage writes</text>
+
+  <path d="M 940 200 L 940 235 L 550 235 L 550 260" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- Local testing loop -->
+  <text x="40" y="460" font-size="12" font-weight="700" letter-spacing="1" fill="#166534">LOCAL UNIT TESTS SIMULATE STAGES ③ &amp; ④ WITHOUT A REAL NETWORK</text>
+  <rect x="40" y="472" width="1020" height="120" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+
+  <rect x="80" y="500" width="260" height="60" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="210" y="524" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d" font-family="Menlo, Consolas, monospace">Env::default()</text>
+  <text x="210" y="542" text-anchor="middle" font-size="10" fill="#14532d">in-memory ledger for #[test]</text>
+
+  <rect x="400" y="500" width="280" height="60" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="540" y="524" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d" font-family="Menlo, Consolas, monospace">testutils::Address::generate</text>
+  <text x="540" y="542" text-anchor="middle" font-size="10" fill="#14532d">mock accounts &amp; auth</text>
+
+  <rect x="740" y="500" width="280" height="60" rx="8" fill="#ffffff" stroke="#16a34a"/>
+  <text x="880" y="524" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">assert_eq! / should_panic</text>
+  <text x="880" y="542" text-anchor="middle" font-size="10" fill="#14532d">verifies behavior — this is what</text>
+  <text x="880" y="555" text-anchor="middle" font-size="10" fill="#14532d">scripts/validate.sh reports on</text>
+
+  <line x1="340" y1="530" x2="398" y2="530" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="680" y1="530" x2="738" y2="530" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <path d="M 655 200 L 655 215 L 1078 215 L 1078 445 L 210 445 L 210 498" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow2)"/>
+  <text x="420" y="435" text-anchor="middle" font-size="10" font-style="italic" fill="#166534">tests simulate the host environment locally — no deploy needed</text>
+
+  <text x="1060" y="625" text-anchor="end" font-size="10" fill="#94a3b8">Source: docs/diagrams/soroban-contract-lifecycle.svg — see docs/diagrams/README.md to update</text>
+</svg>

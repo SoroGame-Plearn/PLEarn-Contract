@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+
+  <!-- page background -->
+  <rect x="0" y="0" width="1200" height="900" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- title -->
+  <text x="600" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">PLEarn System Architecture</text>
+  <text x="600" y="53" text-anchor="middle" font-size="13" fill="#64748b">Challenge structure · test harness · learner feedback loop</text>
+
+  <!-- ============ BAND A: LEARNER JOURNEY ============ -->
+  <text x="40" y="82" font-size="12" font-weight="700" letter-spacing="1" fill="#1e3a8a">LEARNER JOURNEY</text>
+
+  <!-- Box A1 -->
+  <g>
+    <rect x="40" y="94" width="200" height="86" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="140" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">① Pick a Challenge</text>
+    <text x="140" y="147" text-anchor="middle" font-size="11" fill="#334155">browse challenges/</text>
+    <text x="140" y="163" text-anchor="middle" font-size="11" fill="#334155">beginner → advanced</text>
+  </g>
+
+  <!-- Box A2 -->
+  <g>
+    <rect x="270" y="94" width="200" height="86" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="370" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">② Read Instructions</text>
+    <text x="370" y="147" text-anchor="middle" font-size="11" fill="#334155">INSTRUCTIONS.md</text>
+    <text x="370" y="163" text-anchor="middle" font-size="11" fill="#334155">objective · hints</text>
+  </g>
+
+  <!-- Box A3 -->
+  <g>
+    <rect x="500" y="94" width="200" height="86" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="600" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">③ Write Solution</text>
+    <text x="600" y="147" text-anchor="middle" font-size="11" fill="#334155">src/lib.rs</text>
+    <text x="600" y="163" text-anchor="middle" font-size="11" fill="#334155">fill in TODO stubs</text>
+  </g>
+
+  <!-- Box A4 -->
+  <g>
+    <rect x="730" y="94" width="200" height="86" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="830" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">④ Run Validator</text>
+    <text x="830" y="147" text-anchor="middle" font-size="11" fill="#334155">scripts/validate.sh</text>
+    <text x="830" y="163" text-anchor="middle" font-size="11" fill="#334155">or feedback_validator.sh</text>
+  </g>
+
+  <!-- Box A5 -->
+  <g>
+    <rect x="960" y="94" width="200" height="86" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="1060" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">⑤ View Results</text>
+    <text x="1060" y="147" text-anchor="middle" font-size="11" fill="#334155">terminal / HTML report</text>
+    <text x="1060" y="163" text-anchor="middle" font-size="11" fill="#334155">pass ✅ or fail ❌</text>
+  </g>
+
+  <!-- arrows A1->A2->A3->A4->A5 -->
+  <line x1="240" y1="137" x2="268" y2="137" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="470" y1="137" x2="498" y2="137" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="137" x2="728" y2="137" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="930" y1="137" x2="958" y2="137" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- feedback loop: results -> back to write solution -->
+  <path d="M 1060 180 L 1060 205 L 600 205 L 600 182" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+  <text x="830" y="200" text-anchor="middle" font-size="11" font-style="italic" fill="#b91c1c">iterate until all tests pass</text>
+
+  <!-- ============ BAND B: CHALLENGE STRUCTURE ============ -->
+  <text x="40" y="245" font-size="12" font-weight="700" letter-spacing="1" fill="#166534">CHALLENGE STRUCTURE (REPOSITORY LAYOUT)</text>
+
+  <rect x="40" y="257" width="1120" height="150" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+
+  <g font-family="Menlo, Consolas, monospace" font-size="13" fill="#14532d">
+    <text x="64" y="284">challenges/</text>
+    <text x="64" y="304">├── beginner/01-hello-token/, 02-token-transfer/         🟢</text>
+    <text x="64" y="324">├── intermediate/01-voting-contract/, 02-access-control/ 🟡</text>
+    <text x="64" y="344">└── advanced/01-staking-contract/, 02-multisig-wallet/    🔴</text>
+    <text x="94" y="368" fill="#475569">each challenge folder contains:</text>
+  </g>
+
+  <!-- file chips -->
+  <g font-family="Menlo, Consolas, monospace">
+    <rect x="360" y="352" width="190" height="34" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="455" y="374" text-anchor="middle" font-size="12" fill="#14532d">INSTRUCTIONS.md</text>
+
+    <rect x="570" y="352" width="150" height="34" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="645" y="374" text-anchor="middle" font-size="12" fill="#14532d">Cargo.toml</text>
+
+    <rect x="740" y="352" width="150" height="34" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="815" y="374" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">src/lib.rs</text>
+
+    <rect x="910" y="352" width="170" height="34" rx="6" fill="#ffffff" stroke="#16a34a"/>
+    <text x="995" y="374" text-anchor="middle" font-size="12" fill="#14532d">tests/test.rs</text>
+  </g>
+
+  <!-- A1 -> band B -->
+  <path d="M 140 180 L 140 257" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- A3 -> src/lib.rs chip -->
+  <path d="M 600 180 L 600 230 L 815 230 L 815 350" fill="none" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- ============ BAND C: TEST HARNESS ============ -->
+  <text x="40" y="435" font-size="12" font-weight="700" letter-spacing="1" fill="#854d0e">TEST HARNESS &amp; VALIDATION ENGINE</text>
+
+  <rect x="40" y="447" width="1120" height="180" rx="12" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+
+  <!-- script boxes -->
+  <g font-size="12" fill="#713f12">
+    <rect x="70" y="470" width="170" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+    <text x="155" y="495" text-anchor="middle" font-weight="700">validate.sh</text>
+    <text x="155" y="512" text-anchor="middle" font-size="10">single challenge</text>
+
+    <rect x="270" y="470" width="200" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+    <text x="370" y="495" text-anchor="middle" font-weight="700">feedback_validator.sh</text>
+    <text x="370" y="512" text-anchor="middle" font-size="10">detailed pass/fail + hints</text>
+
+    <rect x="500" y="470" width="170" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+    <text x="585" y="495" text-anchor="middle" font-weight="700">run-tests.sh</text>
+    <text x="585" y="512" text-anchor="middle" font-size="10">all challenges</text>
+
+    <rect x="700" y="470" width="150" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+    <text x="775" y="495" text-anchor="middle" font-weight="700">watch.sh</text>
+    <text x="775" y="512" text-anchor="middle" font-size="10">rerun on file change</text>
+
+    <rect x="980" y="470" width="150" height="60" rx="8" fill="#ffffff" stroke="#ca8a04"/>
+    <text x="1055" y="495" text-anchor="middle" font-weight="700">html_report.sh</text>
+    <text x="1055" y="512" text-anchor="middle" font-size="10">--html flag</text>
+  </g>
+
+  <!-- engine box -->
+  <rect x="130" y="560" width="670" height="50" rx="8" fill="#fde68a" stroke="#b45309" stroke-width="1.5"/>
+  <text x="465" y="580" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">cargo test</text>
+  <text x="465" y="596" text-anchor="middle" font-size="10" fill="#78350f">soroban-sdk testutils · Env · Address · ledger sim</text>
+
+  <!-- artifact box -->
+  <rect x="980" y="560" width="150" height="50" rx="8" fill="#ffffff" stroke="#ca8a04" stroke-dasharray="4,3"/>
+  <text x="1055" y="581" text-anchor="middle" font-size="11" fill="#713f12">test-report.html</text>
+  <text x="1055" y="596" text-anchor="middle" font-size="9" fill="#94a3b8">generated artifact</text>
+
+  <!-- connections within band C: each script feeds the cargo test engine -->
+  <path d="M 155 530 L 155 558" fill="none" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 370 530 L 370 558" fill="none" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 585 530 L 585 558" fill="none" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- watch.sh reruns feedback_validator.sh (arc below the row) -->
+  <path d="M 775 530 C 775 552, 370 552, 370 530" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="572" y="551" text-anchor="middle" font-size="9" fill="#64748b">reruns on file change</text>
+
+  <!-- feedback_validator.sh triggers html_report.sh (arc above the row) -->
+  <path d="M 460 470 C 460 453, 1055 453, 1055 468" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="757" y="452" text-anchor="middle" font-size="9" fill="#64748b">--html flag</text>
+
+  <path d="M 1055 530 L 1055 558" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- A4 -> band C -->
+  <path d="M 830 180 L 830 230 L 370 230 L 370 468" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- band C engine -> A5 (results back up) -->
+  <path d="M 700 578 L 1180 578 L 1180 137 L 1162 137" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1180" y="360" text-anchor="middle" font-size="11" fill="#166534" transform="rotate(-90 1180 360)">test results (pass / fail)</text>
+
+  <!-- ============ BAND D: CONTINUOUS INTEGRATION ============ -->
+  <text x="40" y="655" font-size="12" font-weight="700" letter-spacing="1" fill="#86198f">CONTINUOUS INTEGRATION</text>
+
+  <rect x="40" y="667" width="1120" height="100" rx="12" fill="#fdf4ff" stroke="#a21caf" stroke-width="1.5"/>
+
+  <rect x="250" y="683" width="500" height="70" rx="8" fill="#ffffff" stroke="#a21caf"/>
+  <text x="500" y="704" text-anchor="middle" font-size="12" font-weight="700" fill="#701a75">.github/workflows/test.yml</text>
+  <text x="500" y="721" text-anchor="middle" font-size="10" fill="#701a75">fmt → clippy → cargo test (matrix per challenge)</text>
+  <text x="500" y="737" text-anchor="middle" font-size="10" fill="#701a75">on: push to main · on: pull_request</text>
+
+  <rect x="800" y="683" width="280" height="70" rx="8" fill="#ffffff" stroke="#a21caf"/>
+  <text x="940" y="708" text-anchor="middle" font-size="12" font-weight="700" fill="#701a75">PR status check</text>
+  <text x="940" y="726" text-anchor="middle" font-size="10" fill="#701a75">reports pass ✅ / fail ❌</text>
+  <text x="940" y="741" text-anchor="middle" font-size="10" fill="#701a75">per job, in the PR checks tab</text>
+
+  <path d="M 750 718 L 798 718" fill="none" stroke="#a21caf" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- footer -->
+  <text x="1160" y="885" text-anchor="end" font-size="10" fill="#94a3b8">Source: docs/diagrams/architecture.svg — see docs/diagrams/README.md to update</text>
+</svg>
