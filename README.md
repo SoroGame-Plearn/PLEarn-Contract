@@ -62,6 +62,10 @@ PLEarn-Contract/
 │   ├── run-tests.sh              # Run all challenges
 │   └── validate.sh               # Validate a single challenge
 └── docs/
+    ├── SOROBAN_SDK_QUICK_REFERENCE.md  # SDK patterns & examples
+    ├── SETUP_GUIDE.md                  # Installation & setup
+    ├── contributing.md                 # How to contribute
+    └── diagrams/
 ```
 
 ---
@@ -170,6 +174,7 @@ sudo apt install build-essential pkg-config
 
 ### 5. Useful Resources
 
+- 📚 [Soroban SDK Quick Reference](docs/SOROBAN_SDK_QUICK_REFERENCE.md) - **START HERE** for SDK patterns used in PLEarn
 - 📖 [Soroban Documentation](https://soroban.stellar.org/docs) - Official docs
 - 🚀 [Stellar Developer Portal](https://developers.stellar.org/) - Broader ecosystem
 - 🎓 [Soroban by Example](https://soroban.stellar.org/docs/learn/examples) - Code examples

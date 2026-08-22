@@ -6,6 +6,18 @@ PLEarn is built in the open and contributions are welcome at every skill level.
 
 ## Quick Setup for New Contributors
 
+### 0. Learn the SDK (Start Here!)
+
+Before writing code, read the **[Soroban SDK Quick Reference](./SOROBAN_SDK_QUICK_REFERENCE.md)**. It covers all the patterns used in PLEarn challenges:
+
+- Storage patterns (instance vs persistent)
+- Authentication with `require_auth()`
+- Testing patterns
+- Common error scenarios
+- Troubleshooting guide
+
+This guide will help you understand the code and implement challenges correctly without needing to consult external documentation.
+
 ### 1. Prerequisites Check
 
 Before starting, ensure you have:
