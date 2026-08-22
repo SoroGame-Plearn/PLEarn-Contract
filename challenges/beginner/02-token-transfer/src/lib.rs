@@ -264,8 +264,8 @@ mod tests {
         client.mint(&alice, &300);
 
         // Create a circular transfer pattern
-        client.transfer(&alice, &bob, &100);    // Alice: 200, Bob: 100, Charlie: 0
-        client.transfer(&bob, &charlie, &50);   // Alice: 200, Bob: 50, Charlie: 50
+        client.transfer(&alice, &bob, &100); // Alice: 200, Bob: 100, Charlie: 0
+        client.transfer(&bob, &charlie, &50); // Alice: 200, Bob: 50, Charlie: 50
         client.transfer(&charlie, &alice, &25); // Alice: 225, Bob: 50, Charlie: 25
 
         assert_eq!(client.balance(&alice), 225);
