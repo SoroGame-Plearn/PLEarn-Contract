@@ -474,6 +474,10 @@ pub fn transfer(env: Env, from: Address, to: Address, amount: i128) {
 
 ## Testing Patterns
 
+> For a deeper dive — mocking auth and ledger state, testing events, negative test cases,
+> performance considerations, and debugging failing tests — see the
+> **[Testing Strategy Guide](./TESTING_STRATEGY.md)**.
+
 ### Setup Pattern
 
 A common pattern is to create a `setup()` function that initializes the contract for testing:
