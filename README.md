@@ -63,6 +63,7 @@ PLEarn-Contract/
 │   └── validate.sh               # Validate a single challenge
 └── docs/
     ├── SOROBAN_SDK_QUICK_REFERENCE.md  # SDK patterns & examples
+    ├── TESTING_STRATEGY.md             # Testing strategy & best practices
     ├── SETUP_GUIDE.md                  # Installation & setup
     ├── contributing.md                 # How to contribute
     └── diagrams/
@@ -175,6 +176,7 @@ sudo apt install build-essential pkg-config
 ### 5. Useful Resources
 
 - 📚 [Soroban SDK Quick Reference](docs/SOROBAN_SDK_QUICK_REFERENCE.md) - **START HERE** for SDK patterns used in PLEarn
+- 🧪 [Testing Strategy Guide](docs/TESTING_STRATEGY.md) - How to write, mock, and debug contract tests
 - 📖 [Soroban Documentation](https://soroban.stellar.org/docs) - Official docs
 - 🚀 [Stellar Developer Portal](https://developers.stellar.org/) - Broader ecosystem
 - 🎓 [Soroban by Example](https://soroban.stellar.org/docs/learn/examples) - Code examples

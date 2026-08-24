@@ -18,6 +18,10 @@ Before writing code, read the **[Soroban SDK Quick Reference](./SOROBAN_SDK_QUIC
 
 This guide will help you understand the code and implement challenges correctly without needing to consult external documentation.
 
+For a deeper dive on writing and debugging tests specifically — mocking auth and ledger state,
+testing events, negative test cases, performance considerations, and debugging failures — see the
+**[Testing Strategy Guide](./TESTING_STRATEGY.md)**.
+
 ### 1. Prerequisites Check
 
 Before starting, ensure you have:
