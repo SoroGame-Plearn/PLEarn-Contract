@@ -19,3 +19,16 @@ Deploy a simple Soroban token contract that can mint and return a balance.
 ## Hints
 - Use `soroban_sdk::Map` to store balances
 - Use `Address::require_auth()` to enforce admin-only access
+
+## Test Coverage
+`src/lib.rs` includes 15 unit tests covering the happy path plus edge
+cases and security scenarios:
+- Re-initialization (same admin and a different admin) is rejected
+- Minting to a special, non-user address (the contract's own address)
+- Negative mint amounts are rejected, including against an existing balance
+- Minting `i128::MAX` and minting past it (overflow must panic, not wrap)
+- A non-admin authorized caller cannot mint, and mint fails with no
+  authorization mocked at all
+- `balance()` on multiple never-touched accounts returns 0
+- A parametrized sweep of mint amounts (including 0)
+- Event emission on `mint`
